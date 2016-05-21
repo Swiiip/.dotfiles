@@ -6,7 +6,6 @@ brew tap caskroom/cask
 
 apps=(
   google-chrome
-  sublime-text3
   vlc
   iterm2
 )

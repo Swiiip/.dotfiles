@@ -4,29 +4,7 @@
 "             Author: Hugo Duthil
 " --------------------------------------------
 
-call plug#begin('~/.config/nvim/plugged')
-
-" Simple standard vim conf
-Plug 'tpope/vim-sensible'
-
-" Themes
-Plug 'vim-airline/vim-airline' " install vim-airline
-Plug 'vim-airline/vim-airline-themes' " themes for vim-airlines
-Plug 'chriskempson/base16-vim' " theme for vim
-Plug 'ryanoasis/vim-devicons' " fancy icons
-
-" Syntax Helpers
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-surround'
-
-" Navigation
-Plug 'scrooloose/nerdtree'
-
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-call plug#end()
+source ./vimplug.vim
 
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-B> :bprev<CR>
@@ -65,6 +43,7 @@ set background=dark
 nmap <C-d> :NERDTreeToggle<CR>
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:DevIconsEnableFoldersOpenClose = 1
+let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)

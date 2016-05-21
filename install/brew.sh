@@ -9,9 +9,9 @@ brew upgrade
 # Install packages
 apps=(
   cmake
-  #neovim/neovim/neovim --verbose
+  neovim/neovim/neovim --verbose
   wget
-  node
+  fzf
 )
 
 brew install "${apps[@]}"
