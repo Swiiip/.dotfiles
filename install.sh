@@ -1,22 +1,8 @@
 #!/bin/bash
 
-# XCode command line tools must be installed
-#xcode-select --install
+# Get current dir
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Brew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# Cask
-brew tap caskroom/cask
-
-# Iterm2
-brew cask install iterm2
-
-# Utilities
-brew install wget
-
-# OH-MY-ZSH
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-
-# Neovim
-brew install neovim/neovim/neovim
+# Install
+"$DIR/install/brew.sh"
+"$DIR/install/brew-cask.sh"
