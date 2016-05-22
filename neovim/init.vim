@@ -4,7 +4,7 @@
 "             Author: Hugo Duthil
 " --------------------------------------------
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('$HOME/.config/nvim/plugged')
 
 " Simple standard vim conf
 Plug 'tpope/vim-sensible'
@@ -23,8 +23,14 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 
 " Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '$HOME/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Autocomplete
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 call plug#end()
 
@@ -34,6 +40,7 @@ nnoremap <C-B> :bprev<CR>
 set hidden " Leave hidden buffers open
 set history=100 " Remembers the 100 last commands
 set number " Line numbers
+set autoread " reload files when changed
 
 " Navigate between windows
 nnoremap <C-h> <C-w><Left>
@@ -51,6 +58,7 @@ nnoremap <S-l> <S-Right>
 nnoremap <S-j> <S-Down>
 nnoremap <S-k> <S-Up>
 
+
 " Vim-airlines
 let g:airline_powerline_fonts = 1
 let g:airline_theme='base16color'
@@ -65,7 +73,6 @@ set background=dark
 nmap <C-d> :NERDTreeToggle<CR>
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:DevIconsEnableFoldersOpenClose = 1
-let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -102,3 +109,6 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1

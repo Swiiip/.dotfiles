@@ -16,6 +16,7 @@ git clone https://github.com/chriskempson/base16-shell.git $BASE16_DIR
 . "$DIR/install/brew-cask.sh"
 . "$DIR/install/neovim.sh"
 . "$DIR/install/zsh.sh"
+. "$DIR/install/pip.sh"
 
 # Symlinks
 ln -sfv $DIR/neovim/init.vim $HOME/.config/nvim/init.vim

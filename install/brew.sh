@@ -12,6 +12,9 @@ apps=(
   neovim/neovim/neovim --verbose
   wget
   fzf
+  zsh
+  python
+  python3
 )
 
 brew install "${apps[@]}"
