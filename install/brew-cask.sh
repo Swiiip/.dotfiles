@@ -5,7 +5,6 @@ brew tap caskroom/cask
 # Install packages
 
 apps=(
-  google-chrome
   vlc
   iterm2
 )
