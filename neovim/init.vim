@@ -4,7 +4,7 @@
 "             Author: Hugo Duthil
 " --------------------------------------------
 
-source ./vimplug.vim
+source vimplug.vim
 
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-B> :bprev<CR>
