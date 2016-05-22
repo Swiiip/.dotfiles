@@ -12,7 +12,6 @@ if [ ! -d $BASE16_DIR]; then
   mkdir -p $BASE16_DIR
 fi
 git clone https://github.com/chriskempson/base16-shell.git $BASE16_DIR
-source $BASE16_DIR/base16-default.dark.sh
 
 # Install
 . "$DIR/install/brew.sh"
