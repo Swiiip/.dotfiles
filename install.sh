@@ -21,4 +21,4 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 # Symlinks
 ln -sfv $DIR/neovim/init.vim ~/.config/nvim/init.vim
 ln -sfv $DIR/bash_profile ~/.bash_profile
-ln -sfv $DIR/zshrc ~/.zshrc
+#ln -sfv $DIR/zshrc ~/.zshrc
