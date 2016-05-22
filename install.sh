@@ -13,6 +13,7 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 . "$DIR/install/brew.sh"
 . "$DIR/install/brew-cask.sh"
 . "$DIR/install/neovim.sh"
+. "$DIR/install/zsh.sh"
 
 # Symlinks
 ln -sfv $DIR/neovim/init.vim ~/.config/nvim/init.vim
