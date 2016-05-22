@@ -14,3 +14,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Symlinks
 ln -sfv $DIR/neovim/init.vim ~/.config/nvim/init.vim
+ln -sfv $DIR/bash_profile ~/.bash_profile
