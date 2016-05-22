@@ -6,12 +6,13 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Update dotfiles itself first
 [ -d "$DIR/.git" ] && git --work-tree="$DIR" --git-dir="$DIR/.git" pull origin master
 
-# Download base16 shell colors
+# Base16 shell colors
 BASE16_DIR="~/.config/base16-shell"
 if [ ! -d $BASE16_DIR]; then
   mkdir -p $BASE16_DIR
 fi
 git clone https://github.com/chriskempson/base16-shell.git $BASE16_DIR
+source $BASE16_DIR/base16-default.dark.sh
 
 # Install
 . "$DIR/install/brew.sh"
