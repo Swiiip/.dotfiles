@@ -82,6 +82,3 @@ plugins=(git)
 # # Example aliases
 # # alias zshconfig="mate ~/.zshrc"
 # # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Enable FZF shortcuts
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash 

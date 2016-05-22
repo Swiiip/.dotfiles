@@ -7,6 +7,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -d "$DIR/.git" ] && git --work-tree="$DIR" --git-dir="$DIR/.git" pull origin master
 
 # Download base16 shell colors
+if [ ! -d ~/.config/base16-shell ]; then
+  mkdir -p ~/.config/base16-shell
+fi
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 # Install
