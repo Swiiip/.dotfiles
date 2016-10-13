@@ -66,7 +66,9 @@ values."
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
    ;; unused packages as well as their unused dependencies.
-   ;; `used-but-keep-unused' installs only the used packages but won't uninstall
+
+
+;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
    dotspacemacs-install-packages 'used-only))
@@ -124,13 +126,13 @@ values."
                                 (projects . 7))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
+
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(afternoon
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -286,6 +288,14 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
+  (custom-set-variables '(spacemacs-theme-custom-colors
+                          '((bg1 . "#000000")
+                            (comment . "#636a72")
+                            (comment-bg . nil)
+                            (border . "#000000")
+                            (act2 . "#191c28")
+                            (var . "DarkOliveGreen3")
+                            )))
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
 executes.
@@ -298,7 +308,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default evil-escape-key-sequence "kj")
   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
   (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
-  (setq powerline-default-separator 'curve)
+  (setq powerline-default-separator 'nil)
 "This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
