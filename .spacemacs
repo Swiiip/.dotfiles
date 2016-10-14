@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -43,6 +44,9 @@ values."
      emacs-lisp
      spacemacs-ui
      spacemacs-ui-visual
+     spacemacs-editing
+     spacemacs-editing-visual
+     spacemacs-completion
      ;; git
      ;; markdown
      ;; org
@@ -274,7 +278,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("pt" "ag" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -309,6 +313,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
   (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
   (setq powerline-default-separator 'nil)
+  (spacemacs/toggle-automatic-symbol-highlight-on)
+  (setq ahs-default-range 'ahs-range-beginning-of-defun
+        ahs-idle-timer 0
+        ahs-idle-interval 1.3)
 "This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
@@ -323,41 +331,17 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(custom-safe-themes
-   (quote
-    ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default)))
- '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#14151E" t)
- '(minibuffer-electric-default-mode t)
  '(package-selected-packages
    (quote
-    (helm-company helm-c-yasnippet afternoon-theme company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete counsel swiper ivy ws-butler window-numbering volatile-highlights vi-tilde-fringe uuidgen toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text lorem-ipsum linum-relative link-hint key-chord info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-ediff evil-args evil-anzu anzu eval-sexp-fu highlight dumb-jump f s which-key wgrep use-package spacemacs-theme smex quelpa pcre2el macrostep ivy-hydra help-fns+ helm-make flx exec-path-from-shell evil-visualstar evil-escape elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode bind-map auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
+    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode company-anaconda anaconda-mode pythonic wgrep smex ivy-hydra counsel-projectile counsel swiper ivy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+ '(spacemacs-theme-custom-colors
    (quote
-    ((20 . "#d54e53")
-     (40 . "goldenrod")
-     (60 . "#e7c547")
-     (80 . "DarkOliveGreen3")
-     (100 . "#70c0b1")
-     (120 . "DeepSkyBlue1")
-     (140 . "#c397d8")
-     (160 . "#d54e53")
-     (180 . "goldenrod")
-     (200 . "#e7c547")
-     (220 . "DarkOliveGreen3")
-     (240 . "#70c0b1")
-     (260 . "DeepSkyBlue1")
-     (280 . "#c397d8")
-     (300 . "#d54e53")
-     (320 . "goldenrod")
-     (340 . "#e7c547")
-     (360 . "DarkOliveGreen3"))))
- '(vc-annotate-very-old-color nil))
+    ((bg1 . "#000000")
+     (comment . "#636a72")
+     (comment-bg)
+     (border . "#000000")
+     (act2 . "#191c28")
+     (var . "DarkOliveGreen3")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
