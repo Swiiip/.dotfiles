@@ -317,7 +317,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq ahs-default-range 'ahs-range-beginning-of-defun
         ahs-idle-timer 0
         ahs-idle-interval 1.3)
-"This function is called at the very end of Spacemacs initialization after
+  (set-face-attribute 'ahs-plugin-bod-face nil :background "#2c3a51" :foreground "White" :weight "bold")
+  "This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
