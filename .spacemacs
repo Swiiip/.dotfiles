@@ -321,13 +321,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq ahs-default-range 'ahs-range-beginning-of-defun
         ahs-idle-timer 0
         ahs-idle-interval 1.3)
-  (set-face-attribute 'ahs-plugin-bod-face nil :background "#2c3a51" :foreground "White")
   (setq-default dotspacemacs-configuration-layers '(
         (python :variables python-enable-yapf-format-on-save t)))
   (setq evil-move-cursor-back nil)
+  (global-set-key (kbd "C-j") (lambda () (interactive) (scroll-up   2)))
+  (global-set-key (kbd "C-k") (lambda () (interactive) (scroll-down 2)))
+  (spacemacs/toggle-line-numbers-on)
   (spacemacs/toggle-vi-tilde-fringe-off)
-  (global-set-key (kbd "C-k") (lambda () (interactive) (scroll-up   2)))
-  (global-set-key (kbd "C-j") (lambda () (interactive) (scroll-down 2)))
 "This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
