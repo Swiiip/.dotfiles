@@ -139,7 +139,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(ample-flat
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -261,48 +262,11 @@ values."
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
    dotspacemacs-line-numbers nil
-   ;; Code folding method. Possible values are `evil' and `origami'.
-   ;; (default 'evil)
-   dotspacemacs-folding-method 'evil
-   ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
-   ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
-   ;; over any automatically added closing parenthesis, bracket, quote, etc…
-   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
-   ;; Select a scope to highlight delimiters. Possible values are `any',
-   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
-   ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
-   ;; If non nil, advise quit functions to keep server open when quitting.
-   ;; (default nil)
-   dotspacemacs-persistent-server nil
-   ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("pt" "ag" "ack" "grep")
-   ;; The default package repository used if no explicit repository has been
-   ;; specified with an installed package.
-   ;; Not used for now. (default nil)
-   dotspacemacs-default-package-repository nil
-   ;; Delete whitespace while saving buffer. Possible values are `all'
-   ;; to aggressively delete empty line and long sequences of whitespace,
-   ;; `trailing' to delete only the whitespace at end of lines, `changed'to
-   ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
    ))
 
 (defun dotspacemacs/user-init ()
-  (custom-set-variables '(spacemacs-theme-custom-colors
-                          '((bg1 . "#000000")
-                            (comment . "#636a72")
-                            (comment-bg . nil)
-                            (border . "#000000")
-                            (act2 . "#191c28")
-                            (var . "DarkOliveGreen3")
-                            )))
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
 executes.
@@ -345,17 +309,17 @@ you should place your code here."
  '(package-selected-packages
    (quote
     (flycheck-pos-tip pos-tip tide typescript-mode flycheck yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode company-anaconda anaconda-mode pythonic wgrep smex ivy-hydra counsel-projectile counsel swiper ivy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
- '(spacemacs-theme-custom-colors
-   (quote
-    ((bg1 . "#000000")
-     (comment . "#636a72")
-     (comment-bg)
-     (border . "#000000")
-     (act2 . "#191c28")
-     (var . "DarkOliveGreen3")))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ahs-plugin-bod-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(ahs-plugin-defalt-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(ahs-plugin-whole-buffer-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(ahs-definition-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(ahs-edit-mode-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(ahs-face ((t (:foreground "Black" :background "LightYellow4"))))
+ '(powerline-active1 ((t (:foreground "#302525"))))
+)
