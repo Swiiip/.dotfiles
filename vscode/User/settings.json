@@ -1,0 +1,15 @@
+// Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut
+{
+    "update.channel": "default",
+    "workbench.sideBar.location": "left",
+    "editor.renderWhitespace": "none",
+    "files.trimTrailingWhitespace": true,
+    "workbench.editor.showTabCloseButton": false,
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.visible": false,
+    "editor.fontSize": 13,
+    "window.zoomLevel": 0,
+
+    // amVim settings
+    "amVim.bindCtrlCommands": false
+}
