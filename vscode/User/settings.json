@@ -9,6 +9,7 @@
     "workbench.activityBar.visible": false,
     "editor.fontSize": 13,
     "window.zoomLevel": 0,
+    "editor.formatOnType": true,
 
     // amVim settings
     "amVim.bindCtrlCommands": false
