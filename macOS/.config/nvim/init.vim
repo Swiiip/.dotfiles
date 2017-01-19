@@ -50,3 +50,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --depth 10 --ignore .git -l -g ""' 	" Al
 inoremap kj <ESC>
 nnoremap <silent> <C-p> :FZF -m<cr>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nnoremap <S-j> m`o<Esc>``
+nnoremap <S-k> m`O<Esc>``
+nnoremap <S-h> m`i<Space><Esc>``
+nnoremap <S-l> m`i<Space><Esc>``
