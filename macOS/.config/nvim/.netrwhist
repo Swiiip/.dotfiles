@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/hugo'
+let g:netrw_dirhist_2='/Users/hugo/Documents'
+let g:netrw_dirhist_3='/Users/hugo/Documents/projets'
+let g:netrw_dirhist_4='/Users/hugo/Documents/projets/vscode'
