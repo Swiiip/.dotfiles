@@ -1,116 +1,114 @@
-" --------------------------------------------
-"             NeoVim Configuration
-"
-"             Author: Hugo Duthil
-" --------------------------------------------
+call plug#begin("~/.local/share/nvim/plugged")
 
-call plug#begin('$HOME/.config/nvim/plugged')
-
-" Simple standard vim conf
-Plug 'tpope/vim-sensible'
-
-" Themes
-Plug 'vim-airline/vim-airline' " install vim-airline
-Plug 'vim-airline/vim-airline-themes' " themes for vim-airlines
-Plug 'chriskempson/base16-vim' " theme for vim
-Plug 'ryanoasis/vim-devicons' " fancy icons
-
-" Syntax Helpers
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-surround'
-
-" Navigation
-Plug 'scrooloose/nerdtree'
-
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '$HOME/.fzf', 'do': './install --all' }
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+ 
+" Color schemes
+Plug 'chriskempson/base16-vim'                                " Base16 theme
+Plug 'tpope/vim-surround'                                     " Surround
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Deoplete
+Plug 'jiangmiao/auto-pairs'                                   " Autopairs
 
-" Autocomplete
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-jedi'
-
-
+" Initialize plugin system
 call plug#end()
+           
+" ---------------------------------
+"              Options
+" ---------------------------------
+language en_US
+colorscheme base16-default-dark
 
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-B> :bprev<CR>
+set termguicolors     	" Enable true colors
+set showcmd             " Show (partial) command in status line.
+set showmatch           " Show matching brackets.
+set showmode            " Show current mode.
+set ruler               " Show the line and column numbers of the cursor.
+set number              " Show the line numbers on the left side.
+set formatoptions+=o    " Continue comment marker in new lines. set textwidth=0
+set expandtab           " Insert spaces when TAB is pressed.
+set tabstop=4           " Render TABs using this many spaces.
+set shiftwidth=4        " Indentation amount for < and > commands.
+set modeline            " Enable modeline.
+set cursorline          " Highlight cursor line
 
-set hidden " Leave hidden buffers open
-set history=100 " Remembers the 100 last commands
-set number " Line numbers
-set autoread " reload files when changed
+set noerrorbells        " No beeps.
+set linespace=0         " Set line-spacing to minimum.
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
-" Navigate between windows
-nnoremap <C-h> <C-w><Left>
-nnoremap <C-l> <C-w><Right>
-nnoremap <C-j> <C-w><Down>
-nnoremap <C-k> <C-w><Up>
+set splitbelow          " Horizontal split below current.
+set splitright          " Vertical split to right of current.<Paste>
+
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set magic               " Use 'magic' patterns (extended regular expressions).
+
+" ---------------------------------
+"             Variables
+" ---------------------------------
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --depth 10 --ignore .git -g ""'
+
+" ---------------------------------
+"               Maps
+" ---------------------------------
+inoremap <C-l> <Right>
+inoremap <C-k> <Left>
+" TODO: write fzf commands with @, # and C-S-p
+nnoremap <silent> <C-p> :FZF -m<cr>
+nnoremap <silent> <C-b> :Buffers<cr>
+nnoremap <silent> <Esc> :noh<CR>
+
+" Add lines in normal mode
+nnoremap <S-j> m`o<Esc>``
+nnoremap <S-k> m`O<Esc>``
+
+" Add spaces in normal mode
+nnoremap <S-h> i<Space><Esc>l
+nnoremap <S-l> a<Space><Esc>h
+
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Commands
+command! Vimrc :vsp ~/.config/nvim/init.vim
+command! BashProfile :vsp ~/.bash_profile
+
+" Terminal --------------- {{{
+tnoremap <ESC> <C-\><C-n>
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
+augroup terminal_buffer
+    autocmd!
+    autocmd BufEnter term://* startinsert
+    autocmd TermOpen term://* cnoremap <buffer> bd bd!
+augroup END
+" --- }}}
 
-" Move through words/windows
-nnoremap <S-h> <S-Left>
-nnoremap <S-l> <S-Right>
-nnoremap <S-j> <S-Down>
-nnoremap <S-k> <S-Up>
+" Netrw ---------------------- {{{
+let g:netrw_liststyle = 3 		                                    					  " Set netrw display style
+let g:netrw_banner = 0 								                                      " Remove the top banner from netrw
+let g:netrw_browse_split = 4 							                                  " Open file in previous window
+let g:netrw_winsize = 20 							                                      " Netrw window size
+nnoremap <silent> <C-S-e> :Lexplore<CR>
+" }}}
 
+" Deoplete ---------------------- {{{
+call deoplete#enable()
+let g:deoplete#auto_complete_delay=50
+" Use tab to navigate through completions
+inoremap <expr><Tab> pumvisible() ? "\<C-n><C-y>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"  }}}
 
-" Vim-airlines
-let g:airline_powerline_fonts = 1
-let g:airline_theme='base16color'
-let g:airline#extensions#tabline#enabled = 1
-
-" Base16 vim theme
-let base16colorspace=256
-colorscheme base16-default
-set background=dark
-
-" Nerdtree
-nmap <C-d> :NERDTreeToggle<CR>
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-let g:DevIconsEnableFoldersOpenClose = 1
-
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
-
-" FZF
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
